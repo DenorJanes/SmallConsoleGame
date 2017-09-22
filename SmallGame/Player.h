@@ -1,10 +1,10 @@
 #pragma once
 #include "GameObject.h"
 
-class Player : public GameObject
+class Player : public GameObject<char*>
 {
 
-	enum player_propperies { length = 9, cube = 223 }; // cube - code for char symbol
+	enum player_length { length = 9 }; // cube - code for char symbol
 
 public:
 
