@@ -3,6 +3,12 @@ class GameObject
 {
 public:
 
+	struct Point2D
+	{
+		int x;
+		int y;
+	} position;
+
 	virtual void moveTo(int, int) = 0;
 
 	GameObject() = default;

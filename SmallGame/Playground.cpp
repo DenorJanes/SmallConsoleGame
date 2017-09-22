@@ -1,15 +1,35 @@
 #include "Playground.h"
 
+void Playground::attachPlayer(Player* player) 
+{ 
+	if (!player)
+		return;
 
+	_player = player; 
+	_player->position.x = (_scene_size_column - _player->getLength())/2;
+	_player->position.y = _scene_size_row - 3;
+}
+void Playground::UpdatePlayerPosition()
+{
+	if (!_player)
+		return;
+	
+	int Y = _player->position.y;
+	int length = _player->position.x + _player->getLength() - 1;
 
-Playground::Playground(int size_row,int size_column) : _scene_size_row(size_row), _scene_size_column(size_column)
+	for (int X = _player->position.x; X < length; X++)
+		scene[Y][X] = (*_player)[X - _player->position.x];
+}
+
+Playground::Playground(int size_row,int size_column) :
+	_scene_size_row(size_row),
+	_scene_size_column(size_column)
 {
 	scene = new char*[_scene_size_row];
 	for (int i = 0; i < _scene_size_row; ++i)
 	{
 		scene[i] = new char[_scene_size_column];
 	
-		
 		if (i == 0 || i == _scene_size_row - 1)  fill_row(scene[i], '*'); 
 		else
 		{
@@ -18,8 +38,6 @@ Playground::Playground(int size_row,int size_column) : _scene_size_row(size_row)
 		}
 	}
 }
-
-
 Playground::~Playground()
 {
 	if (scene != nullptr)
@@ -44,7 +62,7 @@ void Playground::fill_row(char* scene_row, char with)
 		scene_row[i] = with;
 }
 
-void Playground::display_scene()
+void Playground::display_scene() const
 {
 	for (int i = 0; i < _scene_size_row; ++i)
 	{
