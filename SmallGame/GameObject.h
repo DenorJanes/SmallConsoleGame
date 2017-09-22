@@ -8,7 +8,7 @@ public:
 	GameObject() = default;
 	virtual ~GameObject() = default;
 
-private:
+protected:
 	char* body;
 };
 

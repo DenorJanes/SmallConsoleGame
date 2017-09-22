@@ -5,7 +5,7 @@ class Playground
 {
 public:
 	//default constructor
-	explicit Playground(int size_row = 20, int size_column = 40);
+	explicit Playground(int size_row = 20, int size_column = 41);
 	~Playground();
 
 	void display_scene();
