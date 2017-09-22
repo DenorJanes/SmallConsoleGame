@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "HelpFunctions.h"
 
 class Player : public GameObject<char*>
 {
