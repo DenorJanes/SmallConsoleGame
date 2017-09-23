@@ -3,7 +3,6 @@
 #include "Wall.h"
 #include <time.h>
 #include <random>
-#include <memory>
 
 class Ball : public DynamicGameObject
 {
@@ -18,7 +17,7 @@ public:
 	int getDirectionX() const { return direction.x; }
 	int getDirectionY() const { return direction.y; }
 
-	bool checkPathTo(const char** const scene, int x, int y) override;
+	bool CheckPathTo(const char** const scene, int x, int y) override;
 
 	bool destroyableWall(Wall* wall) 
 	{ 

@@ -12,6 +12,8 @@ Wall::Wall()
 
 		fill_row(body[i], width, DynamicGameObject::body_mesh::cube);
 	}
+
+	wall_health = height * width;
 }
 
 
@@ -33,7 +35,9 @@ void Wall::destroy(Point* begin, Point* end)
 			body[begin->y - position.y][begin->x - position.x] = ' ';
 		}
 
+		wall_health--;
 		begin++;
 	}
 
 }
+

@@ -1,18 +1,19 @@
-#include <iostream>
+#include "HelpFunctions.h"
 #include "Playground.h"
 #include "MovementHandler.h"
-#include <Windows.h>
+#include "GameMaster.h"
 #include <conio.h>
 
 using std::cout;
 
 void main()
 {
-	Playground pg(20,41);
+	Playground pg(20,40);
 	Player player;
 	Wall wall;
 	Ball ball;
 	MovementHandler move(pg,wall);
+	GameMaster gm(pg, wall, ball, player);
 
 	pg.attachPlayer(&player);
 	pg.attachWall(&wall);
@@ -20,15 +21,15 @@ void main()
 
 	ball.destroyableWall(&wall);
 
-	while (1)
-	{
-		pg.UpdatePlayerPosition();
-		pg.UpdateWallPosition();
-		pg.UpdateBallPosition();
+	gm.introduction();
 
-		pg.display_scene();
-		Sleep(100);
-		system("cls");
+	while (true)
+	{
+		gm.updateLevel();
+		gm.showLevel();
+
+		gm.victory_check();
+		gm.loss_check();
 
 		if (_kbhit())
 		{
@@ -41,13 +42,5 @@ void main()
 			ball.getDirectionY(),
 			ball
 		);
-
-		pg.clear_playground();
-
-		///////////////////////
-		
 	}
-
-	
-	system("pause");
 }

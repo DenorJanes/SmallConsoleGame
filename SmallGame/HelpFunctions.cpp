@@ -1,4 +1,4 @@
-#include "DynamicGameObject.h"
+#include "HelpFunctions.h"
 
 void fill_row(char* row, int size, char with)
 {
@@ -6,3 +6,4 @@ void fill_row(char* row, int size, char with)
 		row[i] = with;
 
 }
+

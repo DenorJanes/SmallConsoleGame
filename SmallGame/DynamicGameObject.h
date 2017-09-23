@@ -14,12 +14,12 @@ public:
 		int y;
 	} direction;
 
-	void MoveInDirection()
+	virtual void MoveInDirection()
 	{
 		position.x += direction.x;
 		position.y += direction.y;
 	}
-	virtual bool checkPathTo(const char** const scene,int x, int y) = 0;
+	virtual bool CheckPathTo(const char** const scene,int x, int y) = 0;
 
 	DynamicGameObject() { position.x = position.y = 0; }
 	virtual ~DynamicGameObject() = default;

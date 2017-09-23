@@ -8,6 +8,8 @@
 class Playground
 {
 public:
+	
+
 	//default constructor and destrucor
 	explicit Playground(int size_row = 20, int size_column = 40);
 	~Playground();
@@ -18,6 +20,7 @@ public:
 	// getters
 	int getColumnSize() const { return _scene_size_column; }
 	int getRowSize() const { return _scene_size_row; }
+	int game_over() const { return _scene_size_row-2; }
 	const char** const getScene() const { return const_cast<const char**>(scene); }
 
 	// setters

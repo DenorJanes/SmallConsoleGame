@@ -113,6 +113,7 @@
   <ItemGroup>
     <ClInclude Include="Ball.h" />
     <ClInclude Include="DynamicGameObject.h" />
+    <ClInclude Include="GameMaster.h" />
     <ClInclude Include="HelpFunctions.h" />
     <ClInclude Include="MovementHandler.h" />
     <ClInclude Include="Player.h" />
@@ -121,7 +122,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
-    <ClCompile Include="HelpFunction.cpp" />
+    <ClCompile Include="GameMaster.cpp" />
+    <ClCompile Include="HelpFunctions.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MovementHandler.cpp" />
     <ClCompile Include="Player.cpp" />

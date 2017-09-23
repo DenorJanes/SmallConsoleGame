@@ -11,7 +11,8 @@ public:
 	Player();
 	~Player();
 
-	bool checkPathTo(const char** const scene, int x, int y) override;
+	bool CheckPathTo(const char** const scene, int x, int y) override;
+	void MoveInDirection() override;
 
 	int getLength() const { return length; }
 

@@ -1,7 +1,7 @@
 #include "Ball.h"
 
 
-bool Ball::checkPathTo(const char** const scene,int x, int y)
+bool Ball::CheckPathTo(const char** const scene,int x, int y)
 {
 	int X = x + position.x;
 	int Y = y + position.y;

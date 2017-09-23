@@ -74,13 +74,6 @@ Playground::Playground(int size_row,int size_column) :
 	for (int i = 0; i < _scene_size_row; ++i)
 	{
 		scene[i] = new char[_scene_size_column];
-	
-		if (i == 0 || i == _scene_size_row - 1)  fill_row(scene[i], _scene_size_column, '*');
-		else
-		{
-			fill_row(scene[i], _scene_size_column);
-			scene[i][0] = scene[i][_scene_size_column - 1] = '*';
-		}
 	}
 }
 Playground::~Playground()

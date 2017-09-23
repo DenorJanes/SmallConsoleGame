@@ -8,10 +8,9 @@ Player::Player()
 	fill_row(body, length, cube);
 	body[length] = '\0';
 
-	/*direction.x = 0;
-	direction.y = 0;*/
+	direction.x = 0;
+	direction.y = 0;
 }
-
 
 Player::~Player()
 {
@@ -19,7 +18,7 @@ Player::~Player()
 		delete[] body;
 }
 
-bool Player::checkPathTo(const char ** const scene, int x, int y)
+bool Player::CheckPathTo(const char ** const scene, int x, int y)
 {
 	int X = x + position.x;
 	int Y = y + position.y;
@@ -51,3 +50,11 @@ bool Player::checkPathTo(const char ** const scene, int x, int y)
 
 	return true;
 }
+
+void Player::MoveInDirection()
+{
+	position.x += direction.x*2;
+	position.y += direction.y*1;
+}
+
+

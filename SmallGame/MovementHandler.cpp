@@ -19,6 +19,6 @@ void MovementHandler::execute(int x, int y, DynamicGameObject& obj)
 	if (abs(x) > 1) x /= abs(x);
 	if (abs(y) > 1) y /= abs(y);
 
-	obj.checkPathTo(_pg.getScene(), x, y);
+	obj.CheckPathTo(_pg.getScene(), x, y);
 	obj.MoveInDirection();
 }
