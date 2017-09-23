@@ -1,10 +1,8 @@
 #pragma once
 
-
 class DynamicGameObject
 {
 public:
-
 	enum body_mesh { cube = 223, circle = 111 };
 	struct Point2D
 	{
@@ -23,7 +21,7 @@ public:
 	}
 	virtual bool checkPathTo(const char** const scene,int x, int y) = 0;
 
-	DynamicGameObject() = default;
+	DynamicGameObject() { position.x = position.y = 0; }
 	virtual ~DynamicGameObject() = default;
 
 protected:

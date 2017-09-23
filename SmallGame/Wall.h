@@ -4,14 +4,16 @@
 
 class Wall
 {
-	enum size { width = 30, height = 7 };
+	using Point = DynamicGameObject::Point2D;
 
+private:
+	enum size { width = 30, height = 7 };
 
 	char ** body;
 
 public:
 
-	DynamicGameObject::Point2D position;
+	Point position;
 
 	Wall();
 	~Wall();
@@ -19,6 +21,8 @@ public:
 	// getters
 	int getWidth() const { return width; }
 	int getHeight() const { return height; }
+
+	void destroy(Point* begin, Point* end);
 
 	const char* const operator[](int i) const { return (i < height && i >= 0) ? body[i] : nullptr; }
 

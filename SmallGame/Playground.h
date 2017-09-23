@@ -23,7 +23,7 @@ public:
 	// setters
 	bool attachPlayer(Player* player);
 	bool attachWall(Wall* wall);
-	bool attackBall(Ball* ball);
+	bool attachBall(Ball* ball);
 	
 
 	void UpdatePlayerPosition();

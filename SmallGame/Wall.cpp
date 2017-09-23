@@ -20,3 +20,20 @@ Wall::~Wall()
 	if (!body)
 		delete[] body;
 }
+
+void Wall::destroy(Point* begin, Point* end)
+{
+	while (begin != end)
+	{
+		if (begin->x >= position.x &&
+			begin->y >= position.y &&
+			begin->x < position.x + width &&
+			begin->y < position.y + height)
+		{
+			body[begin->y - position.y][begin->x - position.x] = ' ';
+		}
+
+		begin++;
+	}
+
+}

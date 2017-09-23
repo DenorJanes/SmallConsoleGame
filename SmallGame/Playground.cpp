@@ -22,7 +22,7 @@ bool Playground::attachWall(Wall* wall)
 
 	return true;
 }
-bool Playground::attackBall(Ball* ball)
+bool Playground::attachBall(Ball* ball)
 {
 	if (!ball)
 		return false;

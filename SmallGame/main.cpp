@@ -12,11 +12,13 @@ void main()
 	Player player;
 	Wall wall;
 	Ball ball;
-	MovementHandler move(pg);
+	MovementHandler move(pg,wall);
 
 	pg.attachPlayer(&player);
 	pg.attachWall(&wall);
-	pg.attackBall(&ball);
+	pg.attachBall(&ball);
+
+	ball.destroyableWall(&wall);
 
 	while (1)
 	{
