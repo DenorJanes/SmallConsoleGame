@@ -123,7 +123,7 @@
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="HelpFunction.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Move.cpp" />
+    <ClCompile Include="MovementHandler.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Playground.cpp" />
     <ClCompile Include="Wall.cpp" />

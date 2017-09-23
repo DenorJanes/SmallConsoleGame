@@ -56,7 +56,7 @@
     <ClCompile Include="Ball.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Move.cpp">
+    <ClCompile Include="MovementHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

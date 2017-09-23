@@ -4,14 +4,10 @@
 
 class MovementHandler
 {
-private:
-
-	DynamicGameObject& _obj;
-	Playground& _pg;
-
-
 public:
-	MovementHandler(int x, int y, DynamicGameObject& obj, Playground& pg);
-	~MovementHandler();
+	MovementHandler() = default;
+	~MovementHandler() = default;
+
+	void execute(DynamicGameObject& obj, Playground& pg);
 };
 

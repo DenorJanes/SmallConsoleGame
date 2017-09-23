@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Playground.h"
 #include "MovementHandler.h"
+#include <Windows.h>
 
 using std::cout;
 
@@ -10,18 +11,30 @@ void main()
 	Player player;
 	Wall wall;
 	Ball ball;
+	MovementHandler move;
 
 	pg.attachPlayer(&player);
 	pg.attachWall(&wall);
 	pg.attackBall(&ball);
 
-	pg.UpdatePlayerPosition();
-	pg.UpdateWallPosition();
-	pg.UpdateBallPosition();
+	while (1)
+	{
+		pg.UpdatePlayerPosition();
+		pg.UpdateWallPosition();
+		pg.UpdateBallPosition();
 
-	MovementHandler MovementHandler(-1, 10, ball, pg);
+		pg.display_scene();
+		Sleep(200);
+		system("cls");
 
-	pg.display_scene();
+		move.execute(ball, pg);
 
+		pg.clear_playground();
+
+		///////////////////////
+		
+	}
+
+	
 	system("pause");
 }
