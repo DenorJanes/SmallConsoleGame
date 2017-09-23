@@ -1,10 +1,24 @@
 #include "MovementHandler.h"
 
-void MovementHandler::execute(DynamicGameObject& obj, Playground& pg)
+bool MovementHandler::getKey(char key, Player& player)
 {
-	/*if (abs(x) > 1) x /= abs(x);
-	if (abs(y) > 1) y /= abs(y);*/
+	switch (key)
+	{
+	case 'w': execute(0, -1, player); break;
+	case 's': execute(0, 1, player); break;
+	case 'a': execute(-1, 0, player); break;
+	case 'd': execute(1, 0, player); break;
+	default: return false;
+	}
+	
+	return true;
+}
 
-	obj.checkPathTo(pg.getScene());
+void MovementHandler::execute(int x, int y, DynamicGameObject& obj)
+{
+	if (abs(x) > 1) x /= abs(x);
+	if (abs(y) > 1) y /= abs(y);
+
+	obj.checkPathTo(_pg.getScene(),x,y);
 	obj.MoveInDirection();
 }

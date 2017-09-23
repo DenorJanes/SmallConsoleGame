@@ -1,22 +1,33 @@
 #include "Ball.h"
 
 
-bool Ball::checkPathTo(const char** const scene)
+bool Ball::checkPathTo(const char** const scene,int x, int y)
 {
-	int X = direction.x + position.x;
-	int Y = direction.y + position.y;
+	int X = x + position.x;
+	int Y = y + position.y;
 
-	if(scene[Y][X] != ' ')
-		if (scene[Y][position.x] != ' ' && scene[position.y][X] != ' ') // we are in the corner
-		{ 
-			direction.x = -direction.x;
-			direction.y = -direction.y;
-			return false; 
-		} 
-		else if (scene[Y][position.x] != ' ') { direction.y = -direction.y; return false; } // we are facing top or bottom bounds
-		else if (scene[position.y][X] != ' ') { direction.x = -direction.x; return false; } // we are facing left or right bounds
+	// we are in the corner
+	if (scene[Y][position.x] != ' ' && scene[position.y][X] != ' ') // we are in the corner
+		{
+			direction.x = -x;
+			direction.y = -y;
+			return false;
+		}
+	// we are facing top or bottom bounds
+	else if (scene[Y][position.x] != ' ') { direction.y = -y; return false; }
+	// we are facing left or right bounds																		  
+	else if (scene[position.y][X] != ' ') { direction.x = -x; return false; } 
+	// we are facing the corner
+	else if (scene[Y][X] != ' ')
+	{
+		{
+			direction.x = -x;
+			direction.y = -y;
+			return false;
+		}
+	}
 
-		return true;
+	return true;
 }
 
 Ball::Ball()

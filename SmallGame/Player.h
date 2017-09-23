@@ -4,14 +4,14 @@
 
 class Player : public DynamicGameObject
 {
-	enum player_length { length = 9 }; // cube - code for char symbol
+	enum player_properties { length = 9 }; 
 
 public:
 
 	Player();
 	~Player();
 
-	bool checkPathTo(const char** const scene) override { return 1; }
+	bool checkPathTo(const char** const scene, int x, int y) override;
 
 	int getLength() const { return length; }
 

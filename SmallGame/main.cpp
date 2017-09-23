@@ -2,6 +2,7 @@
 #include "Playground.h"
 #include "MovementHandler.h"
 #include <Windows.h>
+#include <conio.h>
 
 using std::cout;
 
@@ -11,7 +12,7 @@ void main()
 	Player player;
 	Wall wall;
 	Ball ball;
-	MovementHandler move;
+	MovementHandler move(pg);
 
 	pg.attachPlayer(&player);
 	pg.attachWall(&wall);
@@ -24,10 +25,20 @@ void main()
 		pg.UpdateBallPosition();
 
 		pg.display_scene();
-		Sleep(200);
+		Sleep(100);
 		system("cls");
 
-		move.execute(ball, pg);
+		if (_kbhit())
+		{
+			char input = _getch();
+			move.getKey(input,player);
+		}
+
+		move.execute(
+			ball.getDirectionX(),
+			ball.getDirectionY(),
+			ball
+		);
 
 		pg.clear_playground();
 

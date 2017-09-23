@@ -13,7 +13,7 @@ public:
 	int getDirectionX() const { return direction.x; }
 	int getDirectionY() const { return direction.y; }
 
-	bool checkPathTo(const char** const scene) override;
+	bool checkPathTo(const char** const scene, int x, int y) override;
 
 };
 

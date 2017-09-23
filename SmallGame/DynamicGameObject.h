@@ -21,7 +21,7 @@ public:
 		position.x += direction.x;
 		position.y += direction.y;
 	}
-	virtual bool checkPathTo(const char** const scene) = 0;
+	virtual bool checkPathTo(const char** const scene,int x, int y) = 0;
 
 	DynamicGameObject() = default;
 	virtual ~DynamicGameObject() = default;
