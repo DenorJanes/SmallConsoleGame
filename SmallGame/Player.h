@@ -1,10 +1,9 @@
 #pragma once
-#include "GameObject.h"
+#include "DynamicGameObject.h"
 #include "HelpFunctions.h"
 
-class Player : public GameObject<char*>
+class Player : public DynamicGameObject
 {
-
 	enum player_length { length = 9 }; // cube - code for char symbol
 
 public:
@@ -12,7 +11,7 @@ public:
 	Player();
 	~Player();
 
-	virtual void moveTo(int x, int y) override;
+	bool checkPathTo(const char** const scene, int* x, int* y) override { return 1; }
 
 	int getLength() const { return length; }
 

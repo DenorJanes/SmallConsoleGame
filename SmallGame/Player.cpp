@@ -1,10 +1,6 @@
 #include "Player.h"
 
 
-void Player::moveTo(int x, int y)
-{
-
-}
 
 Player::Player()
 {

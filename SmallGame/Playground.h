@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Player.h"
 #include "Wall.h"
+#include "Ball.h"
 #include "HelpFunctions.h"
 
 class Playground
@@ -14,20 +15,28 @@ public:
 	// displaying the content that is already exist in the scene
 	void display_scene() const;
 
-	// getters and setters
+	// getters
 	int getColumnSize() const { return _scene_size_column; }
 	int getRowSize() const { return _scene_size_row; }
-	void attachPlayer(Player* player);
-	void attachWall(Wall* wall);
+	const char** const getScene() const { return const_cast<const char**>(scene); }
+
+	// setters
+	bool attachPlayer(Player* player);
+	bool attachWall(Wall* wall);
+	bool attackBall(Ball* ball);
+	
 
 	void UpdatePlayerPosition();
 	void UpdateWallPosition();
+	void UpdateBallPosition();
+
 	void clear_playground();
 
 private:
 
 	Player* _player;
 	Wall* _wall;
+	Ball* _ball;
 
 	int _scene_size_row, _scene_size_column; 
 	char** scene;

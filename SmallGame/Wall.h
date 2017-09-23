@@ -1,13 +1,18 @@
 #pragma once
-#include "GameObject.h"
+#include "DynamicGameObject.h"
 #include "HelpFunctions.h"
 
-
-class Wall: public GameObject<char**>
+class Wall
 {
 	enum size { width = 30, height = 7 };
 
+
+	char ** body;
+
 public:
+
+	DynamicGameObject::Point2D position;
+
 	Wall();
 	~Wall();
 
@@ -17,6 +22,5 @@ public:
 
 	const char* const operator[](int i) const { return (i < height && i >= 0) ? body[i] : nullptr; }
 
-	virtual void moveTo(int x, int y) override {};
 };
 

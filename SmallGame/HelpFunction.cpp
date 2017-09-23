@@ -1,4 +1,4 @@
-#include "GameObject.h"
+#include "DynamicGameObject.h"
 
 void fill_row(char* row, int size, char with)
 {

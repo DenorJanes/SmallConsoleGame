@@ -10,7 +10,7 @@ Wall::Wall()
 	{
 		body[i] = new char[width];
 
-		fill_row(body[i], width, cube);
+		fill_row(body[i], width, DynamicGameObject::body_mesh::cube);
 	}
 }
 

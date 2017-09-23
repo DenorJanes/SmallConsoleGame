@@ -111,15 +111,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Ball.h" />
+    <ClInclude Include="DynamicGameObject.h" />
     <ClInclude Include="HelpFunctions.h" />
+    <ClInclude Include="MovementHandler.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Playground.h" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Ball.cpp" />
     <ClCompile Include="HelpFunction.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Move.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Playground.cpp" />
     <ClCompile Include="Wall.cpp" />
