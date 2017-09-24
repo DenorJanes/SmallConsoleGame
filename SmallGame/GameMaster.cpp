@@ -7,7 +7,8 @@ void GameMaster::introduction()
 	cout << "*    Before the game starts    *" << endl;
 	cout << "* make sure that you are using *" << endl;
 	cout << "*   english language on your   *" << endl;
-	cout << "* computer with caps lock off. *" << endl;
+	cout << "* computer with caps lock off! *" << endl;
+	cout << "*   Press w s a d to control.  *" << endl;
 	cout << "*          Good luck!          *" << endl;
 	cout << "********************************" << endl;
 	system("pause");
