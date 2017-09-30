@@ -23,7 +23,7 @@ Wall::~Wall()
 		delete[] body;
 }
 
-void Wall::destroy(Point* begin, Point* end)
+void Wall::destroy(iterP2D begin, iterP2D end)
 {
 	while (begin != end)
 	{
@@ -33,11 +33,16 @@ void Wall::destroy(Point* begin, Point* end)
 			begin->y < position.y + height)
 		{
 			body[begin->y - position.y][begin->x - position.x] = ' ';
+			wall_health--;
 		}
 
-		wall_health--;
 		begin++;
 	}
+}
 
+const char Wall::getBody(int row, int column) const 
+{ 
+	if (column >= 0 && row >= 0 && column < width && row < height) return body[row][column];
+	else return ' ';
 }
 

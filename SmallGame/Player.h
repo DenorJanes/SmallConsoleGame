@@ -16,6 +16,6 @@ public:
 
 	int getLength() const { return length; }
 
-	char operator[](int i) const { return (i < length && i >= 0) ? body[i] : ' '; }
+	const char getBody(int pos) const { return (pos < length && pos >= 0) ? body[pos] : ' '; }
 };
 

@@ -38,7 +38,7 @@ void GameMaster::victory_check()
 {
 	if (_wall.getWallHealth() == 0)
 	{
-		cout << "congratulations! You win!" << endl;
+		cout << "Congratulations! You win!" << endl;
 		system("pause");
 
 		exit(1);

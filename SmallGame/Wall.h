@@ -1,10 +1,12 @@
 #pragma once
 #include "DynamicGameObject.h"
 #include "HelpFunctions.h"
+#include <list>
 
 class Wall
 {
-	using Point = DynamicGameObject::Point2D;
+	using Point2D = DynamicGameObject::Point2D;
+	using iterP2D = std::list<Point2D>::iterator;
 
 private:
 	enum size { width = 30, height = 7 };
@@ -16,7 +18,7 @@ private:
 public:
 	
 
-	Point position;
+	Point2D position;
 
 	Wall();
 	~Wall();
@@ -26,8 +28,7 @@ public:
 	int getHeight() const { return height; }
 	int getWallHealth() const { return wall_health; }
 
-	void destroy(Point* begin, Point* end);
+	void destroy(iterP2D begin, iterP2D end);
 
-	const char* const operator[](int i) const { return (i < height && i >= 0) ? body[i] : nullptr; }
-
+	const char getBody(int row, int column) const;
 };

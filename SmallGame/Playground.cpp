@@ -42,19 +42,19 @@ void Playground::UpdatePlayerPosition()
 	int length = _player->position.x + _player->getLength();
 
 	for (int X = _player->position.x; X < length; X++)
-		scene[Y][X] = (*_player)[X - _player->position.x];
+		scene[Y][X] = _player->getBody(X - _player->position.x);
 }
-void Playground::UpdateWallPosition() {
+void Playground::UpdateWallPosition() 
+{
 	if (!_wall)
 		return;
-
 
 	int width = _wall->position.x + _wall->getWidth();
 	int height = _wall->position.y + _wall->getHeight();
 
 	for (int Y = _wall->position.y; Y < height; Y++)
 		for (int X = _wall->position.x; X < width; X++)
-			scene[Y][X] = (*_wall)[Y - _wall->position.y][X - _wall->position.x];
+			scene[Y][X] = _wall->getBody(Y - _wall->position.y, X - _wall->position.x);
 }
 void Playground::UpdateBallPosition() {
 	if (!_ball)

@@ -1,11 +1,12 @@
 #include "Ball.h"
-
+#include <list>
 
 bool Ball::CheckPathTo(const char** const scene,int x, int y)
 {
 	int X = x + position.x;
 	int Y = y + position.y;
 	
+	// for different direction after hitting the edge
 	static bool tryX = true;
 
 	// we are in the corner
@@ -16,14 +17,12 @@ bool Ball::CheckPathTo(const char** const scene,int x, int y)
 			
 			if (_wall)
 			{
-				Point2D* points = new Point2D[3];
-				points[0] = Point2D{ position.x, Y };
-				points[1] = Point2D{ X, position.y };
-				points[2] = Point2D{ X, Y };
+				std::list<Point2D> points;
+				points.push_back(Point2D{ position.x, Y });
+				points.push_back(Point2D{ X, position.y });
+				points.push_back(Point2D{ X, Y });
 
-				_wall->destroy(points, points + 3);
-
-				delete[] points;
+				_wall->destroy(points.begin(), points.end());
 			}
 		}
 	// we are facing top or bottom bounds
@@ -33,12 +32,10 @@ bool Ball::CheckPathTo(const char** const scene,int x, int y)
 
 		if (_wall)
 		{
-			Point2D* point = new Point2D;
-			*point = Point2D{ position.x, Y };
+			std::list<Point2D> points;
+			points.push_back(Point2D{ position.x, Y });
 
-			_wall->destroy(point, point + 1);
-
-			delete point;
+			_wall->destroy(points.begin(), points.end());
 		}
 	}
 	// we are facing left or right bounds																		  
@@ -48,15 +45,13 @@ bool Ball::CheckPathTo(const char** const scene,int x, int y)
 
 		if (_wall)
 		{
-			Point2D* point = new Point2D;
-			*point = Point2D{ X, position.y };
+			std::list<Point2D> points;
+			points.push_back(Point2D{ X, position.y });
 
-			_wall->destroy(point, point + 1);
-
-			delete point;
+			_wall->destroy(points.begin(), points.end());
 		}
 	} 
-	// we are facing the corner
+	// we are facing the edge of the corner
 	else if (scene[Y][X] != ' ')
 	{
 		if (tryX) direction.x = -x;
@@ -66,17 +61,15 @@ bool Ball::CheckPathTo(const char** const scene,int x, int y)
 
 		if (_wall)
 		{
-			Point2D* point = new Point2D;
-			*point = Point2D{ X, Y };
+			std::list<Point2D> points;
+			points.push_back(Point2D{ X, Y });
 
-			_wall->destroy(point, point + 1);
-
-			delete point;
+			_wall->destroy(points.begin(), points.end());
 		}	
 	}
 
 	if(scene[position.y + direction.y][position.x + direction.x] == ' ') return true;
-	else CheckPathTo(scene, direction.x, direction.y);
+	else return false;
 }
 
 Ball::Ball()

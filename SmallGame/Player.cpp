@@ -28,19 +28,18 @@ bool Player::CheckPathTo(const char ** const scene, int x, int y)
 	{
 		if (scene[position.y][X] != ' ' && scene[position.y][X + length] != ' ')
 		{
-			direction.x = 0;
-			return false;
+			x = 0;
 		}
 	}
 	// moving up or down
 	else if (x == 0) 
 	{
-		for (int i = position.x; i < position.x + length; ++i)
+		for (int iX = position.x; iX < position.x + length; ++iX)
 		{
-			if (scene[Y][i] != ' ') 
+			if (scene[Y][iX] != ' ') 
 			{
-				direction.y = 0;
-				return false;
+				y = 0;
+				break;
 			}
 		}
 	}
