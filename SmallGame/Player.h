@@ -4,7 +4,7 @@
 
 class Player : public DynamicGameObject
 {
-	enum player_properties { length = 9 }; 
+	enum player_properties { length = 10 }; 
 
 public:
 

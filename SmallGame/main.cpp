@@ -25,22 +25,24 @@ void main()
 
 	while (true)
 	{
+		if (_kbhit())
+		{
+			char input = _getch();
+			move.getKey(input, player);
+		}
+
 		gm.updateLevel();
 		gm.showLevel();
 
 		gm.victory_check();
 		gm.loss_check();
 
-		if (_kbhit())
-		{
-			char input = _getch();
-			move.getKey(input,player);
-		}
-
 		move.execute(
 			ball.getDirectionX(),
 			ball.getDirectionY(),
 			ball
 		);
+
+		gm.updateLevel();
 	}
 }

@@ -5,6 +5,8 @@ bool Ball::CheckPathTo(const char** const scene,int x, int y)
 {
 	int X = x + position.x;
 	int Y = y + position.y;
+	
+	static bool tryX = true;
 
 	// we are in the corner
 	if (scene[Y][position.x] != ' ' && scene[position.y][X] != ' ') // we are in the corner
@@ -23,7 +25,6 @@ bool Ball::CheckPathTo(const char** const scene,int x, int y)
 
 				delete[] points;
 			}
-			return false;
 		}
 	// we are facing top or bottom bounds
 	else if (scene[Y][position.x] != ' ') 
@@ -39,7 +40,6 @@ bool Ball::CheckPathTo(const char** const scene,int x, int y)
 
 			delete point;
 		}
-		return false; 
 	}
 	// we are facing left or right bounds																		  
 	else if (scene[position.y][X] != ' ') 
@@ -55,30 +55,28 @@ bool Ball::CheckPathTo(const char** const scene,int x, int y)
 
 			delete point;
 		}
-
-		return false; 
 	} 
 	// we are facing the corner
 	else if (scene[Y][X] != ' ')
 	{
+		if (tryX) direction.x = -x;
+		else if (!tryX) direction.y = -y;
+		
+		tryX = !tryX;
+
+		if (_wall)
 		{
-			direction.x = -x;
-			direction.y = -y;
+			Point2D* point = new Point2D;
+			*point = Point2D{ X, Y };
 
-			if (_wall)
-			{
-				Point2D* point = new Point2D;
-				*point = Point2D{ X, Y };
+			_wall->destroy(point, point + 1);
 
-				_wall->destroy(point, point + 1);
-
-				delete point;
-			}
-			return false;
-		}
+			delete point;
+		}	
 	}
 
-	return true;
+	if(scene[position.y + direction.y][position.x + direction.x] == ' ') return true;
+	else CheckPathTo(scene, direction.x, direction.y);
 }
 
 Ball::Ball()
