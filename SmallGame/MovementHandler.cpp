@@ -1,6 +1,9 @@
 #include "MovementHandler.h"
+#include "DynamicGameObject.h"
+#include "Playground.h"
+#include <cmath>
 
-bool MovementHandler::getKey(char key, Player& player)
+bool MovementHandler::getKey(char key, DynamicGameObject& player)
 {
 	switch (key)
 	{
@@ -14,13 +17,13 @@ bool MovementHandler::getKey(char key, Player& player)
 	return true;
 }
 
-void MovementHandler::execute(int x, int y, DynamicGameObject& obj)
+void MovementHandler::execute(int dirX, int dirY, DynamicGameObject& obj)
 {
-	if (abs(x) > 1) x /= abs(x);
-	if (abs(y) > 1) y /= abs(y);
+	if (abs(dirX) > 1) dirX /= abs(dirX);
+	if (abs(dirY) > 1) dirY /= abs(dirY);
 
-	// check if proper direction isn't set yet
-	if (!obj.CheckPathTo(_pg.getScene(), x, y))
+	// check if direction that ball can move ahead is set
+	if (!obj.CheckPathTo(_pg.getScene(), dirX, dirY))
 	{
 		while (!obj.CheckPathTo(
 			_pg.getScene(),

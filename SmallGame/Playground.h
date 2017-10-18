@@ -1,15 +1,12 @@
 #pragma once
-#include <iostream>
-#include "Player.h"
-#include "Wall.h"
-#include "Ball.h"
-#include "HelpFunctions.h"
+
+class Player;
+class Wall;
+class Ball;
 
 class Playground
 {
 public:
-	
-
 	//default constructor and destrucor
 	explicit Playground(int size_row = 20, int size_column = 40);
 	~Playground();

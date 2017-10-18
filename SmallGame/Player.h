@@ -7,7 +7,6 @@ class Player : public DynamicGameObject
 	enum player_properties { length = 10 }; 
 
 public:
-
 	Player();
 	~Player();
 

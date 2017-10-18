@@ -1,4 +1,12 @@
 #include "GameMaster.h"
+#include "Ball.h"
+#include "Wall.h"
+#include "Playground.h"
+#include <iostream>
+#include <Windows.h>
+
+using std::cout;
+using std::endl;
 
 void GameMaster::introduction()
 {

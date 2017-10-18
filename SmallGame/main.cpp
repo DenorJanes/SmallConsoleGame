@@ -1,18 +1,20 @@
 #include "HelpFunctions.h"
 #include "Playground.h"
+#include "Ball.h"
+#include "Player.h"
+#include "Wall.h"
 #include "MovementHandler.h"
 #include "GameMaster.h"
 #include <conio.h>
 
-using std::cout;
 
 void main()
 {
-	Playground pg(20,40);
+	Playground pg;
 	Player player;
 	Wall wall;
 	Ball ball;
-	MovementHandler move(pg,wall);
+	MovementHandler move(pg);
 	GameMaster gm(pg, wall, ball, player);
 
 	pg.attachPlayer(&player);

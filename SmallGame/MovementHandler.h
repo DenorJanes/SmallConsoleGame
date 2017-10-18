@@ -1,19 +1,23 @@
 #pragma once
-#include "DynamicGameObject.h"
-#include "Playground.h"
+
+class Playground;
+class DynamicGameObject;
 
 class MovementHandler
 {
 private:
+	// a location for movement
 	Playground& _pg;
-	Wall& _wall;
 
 public:
 	MovementHandler() = delete;
-	explicit MovementHandler(Playground& pg, Wall& wall) : _pg(pg), _wall(wall) {}
+	explicit MovementHandler(Playground& pg) : _pg(pg) {}
 	~MovementHandler() = default;
 
-	bool getKey(char key, Player& player);
+	// a method for player input movement
+	bool getKey(char key, DynamicGameObject& player);
+
+	// a method for movement in supplied direction
 	void execute(int x, int y, DynamicGameObject& obj);
 };
 

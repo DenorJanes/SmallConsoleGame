@@ -1,30 +1,31 @@
 #pragma once
 #include "DynamicGameObject.h"
-#include "Wall.h"
 #include <time.h>
 #include <random>
+
+class Wall;
 
 class Ball : public DynamicGameObject
 {
 private:
+	// an object that can be destructed by ball
 	Wall* _wall;
 
 public:
-	Ball();
+	explicit Ball(Wall* = nullptr);
 	~Ball();
 
 	const char getBody() const { return *body; }
 	int getDirectionX() const { return direction.x; }
 	int getDirectionY() const { return direction.y; }
 
-	bool CheckPathTo(const char** const scene, int x, int y) override;
+	virtual bool CheckPathTo(const char** const scene, int x, int y) override;
+	virtual void MoveInDirection() override;
 
-	bool destroyableWall(Wall* wall) 
+	void destroyableWall(Wall* wall) 
 	{ 
-		if (!wall) return false;
+		if (!wall) return;
 		else _wall = wall;
-		return true; 
 	}
-
 };
 

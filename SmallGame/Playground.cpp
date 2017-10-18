@@ -1,4 +1,9 @@
 #include "Playground.h"
+#include "Player.h"
+#include "Wall.h"
+#include "Ball.h"
+#include "HelpFunctions.h"
+#include <iostream>
 
 bool Playground::attachPlayer(Player* player) 
 { 
@@ -66,15 +71,15 @@ void Playground::UpdateBallPosition() {
 	scene[Y][X] = _ball->getBody();
 }
 
-Playground::Playground(int size_row,int size_column) :
-	_scene_size_row(size_row),
-	_scene_size_column(size_column)
+Playground::Playground(int size_row,int size_column)
 {
+	_scene_size_row = (size_row < 20) ? 20 : size_row;
+	_scene_size_column = (size_column < 40) ? 40 : size_column;
+
 	scene = new char*[_scene_size_row];
+
 	for (int i = 0; i < _scene_size_row; ++i)
-	{
 		scene[i] = new char[_scene_size_column];
-	}
 }
 Playground::~Playground()
 {
@@ -100,7 +105,8 @@ void Playground::display_scene() const
 	for (int i = 0; i < _scene_size_row; ++i)
 	{
 		for (int j = 0; j < _scene_size_column; ++j)
-			std::cout << scene[i][j]/* << ' '*/;
+			std::cout << scene[i][j];
+
 		std::cout << std::endl;
 	}
 }

@@ -1,4 +1,5 @@
 #include "Ball.h"
+#include "Wall.h"
 #include <list>
 
 bool Ball::CheckPathTo(const char** const scene,int x, int y)
@@ -7,7 +8,7 @@ bool Ball::CheckPathTo(const char** const scene,int x, int y)
 	int Y = y + position.y;
 	
 	// for different direction after hitting the edge
-	static bool tryX = true;
+	bool decision = rand() % 2;
 
 	// we are in the corner
 	if (scene[Y][position.x] != ' ' && scene[position.y][X] != ' ') // we are in the corner
@@ -54,10 +55,7 @@ bool Ball::CheckPathTo(const char** const scene,int x, int y)
 	// we are facing the edge of the corner
 	else if (scene[Y][X] != ' ')
 	{
-		if (tryX) direction.x = -x;
-		else if (!tryX) direction.y = -y;
-		
-		tryX = !tryX;
+		(decision) ? direction.x = -x : direction.y = -y;
 
 		if (_wall)
 		{
@@ -71,8 +69,13 @@ bool Ball::CheckPathTo(const char** const scene,int x, int y)
 	if(scene[position.y + direction.y][position.x + direction.x] == ' ') return true;
 	else return false;
 }
+void Ball::MoveInDirection()
+{
+	position.x += direction.x;
+	position.y += direction.y;
+}
 
-Ball::Ball()
+Ball::Ball(Wall* wall): _wall(wall)
 {
 	srand(time(NULL));
 

@@ -1,12 +1,9 @@
 #pragma once
-#include "Ball.h"
-#include "Wall.h"
-#include "Playground.h"
-#include <iostream>
-#include <Windows.h>
 
-using std::cout;
-using std::endl;
+class Playground;
+class Wall;
+class Ball;
+class Player;
 
 class GameMaster
 {

@@ -10,14 +10,10 @@ class Wall
 
 private:
 	enum size { width = 30, height = 7 };
-
-	char ** body;
-
+	char** body;
 	int wall_health;
 
 public:
-	
-
 	Point2D position;
 
 	Wall();
