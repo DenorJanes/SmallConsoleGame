@@ -1,24 +1,14 @@
 #include "Player.h"
 
-
-
 Player::Player()
 {
-	body = new char[length + 1];
-	fill_row(body, length, cube);
-	body[length] = '\0';
+	body.push_back(std::string(length, cube));
 
 	direction.x = 0;
 	direction.y = 0;
 }
 
-Player::~Player()
-{
-	if (body)
-		delete[] body;
-}
-
-bool Player::CheckPathTo(const char ** const scene, int x, int y)
+bool Player::CheckPathTo(const std::vector<std::string> scene, int x, int y)
 {
 	int X = x + position.x;
 	int Y = y + position.y;
@@ -49,7 +39,6 @@ bool Player::CheckPathTo(const char ** const scene, int x, int y)
 
 	return true;
 }
-
 void Player::MoveInDirection()
 {
 	position.x += direction.x*2;

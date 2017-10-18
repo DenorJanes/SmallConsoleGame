@@ -27,8 +27,8 @@ void MovementHandler::execute(int dirX, int dirY, DynamicGameObject& obj)
 	{
 		while (!obj.CheckPathTo(
 			_pg.getScene(),
-			obj.direction.x,
-			obj.direction.y
+			obj.getDirectionX(),
+			obj.getDirectionY()
 		));
 	}
 

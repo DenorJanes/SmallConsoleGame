@@ -13,13 +13,11 @@ private:
 
 public:
 	explicit Ball(Wall* = nullptr);
-	~Ball();
+	~Ball() = default;
 
-	const char getBody() const { return *body; }
-	int getDirectionX() const { return direction.x; }
-	int getDirectionY() const { return direction.y; }
+	const char getBody() const { return body[0][0]; }
 
-	virtual bool CheckPathTo(const char** const scene, int x, int y) override;
+	virtual bool CheckPathTo(const std::vector<std::string> scene, int x, int y) override;
 	virtual void MoveInDirection() override;
 
 	void destroyableWall(Wall* wall) 

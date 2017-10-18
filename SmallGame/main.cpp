@@ -1,4 +1,3 @@
-#include "HelpFunctions.h"
 #include "Playground.h"
 #include "Ball.h"
 #include "Player.h"

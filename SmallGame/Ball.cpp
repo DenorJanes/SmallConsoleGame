@@ -2,7 +2,7 @@
 #include "Wall.h"
 #include <list>
 
-bool Ball::CheckPathTo(const char** const scene,int x, int y)
+bool Ball::CheckPathTo(const std::vector<std::string> scene, int x, int y)
 {
 	int X = x + position.x;
 	int Y = y + position.y;
@@ -82,10 +82,6 @@ Ball::Ball(Wall* wall): _wall(wall)
 	direction.x = (rand() % 2) ? 1 : -1;
 	direction.y = -1;
 
-	body = new char(circle);
+	body.push_back(std::string(1,circle));
 }
 
-Ball::~Ball()
-{
-	delete body;
-}

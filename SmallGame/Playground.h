@@ -1,15 +1,16 @@
 #pragma once
+#include "GameObject.h"
 
 class Player;
 class Wall;
 class Ball;
 
-class Playground
+class Playground : public GameObject
 {
 public:
 	//default constructor and destrucor
 	explicit Playground(int size_row = 20, int size_column = 40);
-	~Playground();
+	~Playground() = default;
 
 	// displaying the content that is already exist in the scene
 	void display_scene() const;
@@ -18,7 +19,7 @@ public:
 	int getColumnSize() const { return _scene_size_column; }
 	int getRowSize() const { return _scene_size_row; }
 	int game_over() const { return _scene_size_row-2; }
-	const char** const getScene() const { return const_cast<const char**>(scene); }
+	const std::vector<std::string> const getScene() const { return body; }
 
 	// setters
 	bool attachPlayer(Player* player);
@@ -39,6 +40,5 @@ private:
 	Ball* _ball;
 
 	int _scene_size_row, _scene_size_column; 
-	char** scene;
 };
 

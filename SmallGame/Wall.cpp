@@ -1,26 +1,11 @@
 #include "Wall.h"
 
-
-
 Wall::Wall()
 {
-	body = new char*[height];
-
 	for (int i(0); i < height; ++i)
-	{
-		body[i] = new char[width];
-
-		fill_row(body[i], width, DynamicGameObject::body_mesh::cube);
-	}
+		body.push_back(std::string(width, cube));
 
 	wall_health = height * width;
-}
-
-
-Wall::~Wall()
-{
-	if (!body)
-		delete[] body;
 }
 
 void Wall::destroy(iterP2D begin, iterP2D end)

@@ -33,10 +33,10 @@
     <ClInclude Include="DynamicGameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HelpFunctions.h">
+    <ClInclude Include="GameMaster.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameMaster.h">
+    <ClInclude Include="GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -57,9 +57,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MovementHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HelpFunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameMaster.cpp">

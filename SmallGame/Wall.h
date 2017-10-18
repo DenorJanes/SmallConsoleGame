@@ -1,23 +1,20 @@
 #pragma once
 #include "DynamicGameObject.h"
-#include "HelpFunctions.h"
 #include <list>
 
-class Wall
+class Wall: GameObject
 {
-	using Point2D = DynamicGameObject::Point2D;
 	using iterP2D = std::list<Point2D>::iterator;
 
 private:
 	enum size { width = 30, height = 7 };
-	char** body;
 	int wall_health;
 
 public:
 	Point2D position;
 
 	Wall();
-	~Wall();
+	~Wall() = default;
 
 	// getters
 	int getWidth() const { return width; }
