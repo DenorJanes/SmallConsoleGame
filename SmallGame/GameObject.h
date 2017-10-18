@@ -12,7 +12,7 @@ public:
 		int y;
 	} position;
 
-	GameObject() = default;
+	GameObject() { position.x = 0; position.y = 0; }
 	virtual ~GameObject() = default;
 
 protected:
