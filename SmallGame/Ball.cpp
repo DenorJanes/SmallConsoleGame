@@ -4,9 +4,10 @@
 
 bool Ball::CheckPathInDirection(const std::vector<std::string> scene)
 {
+	// check if ball now is ready to fall after being locked
 	if (direction.y == 0 && 
-		direction.x == 0)
-		if (scene[position.y + 1][position.x] == ' ')
+		direction.x == 0 &&
+		scene[position.y + 1][position.x] == ' ')
 		{
 			fall();
 		}
