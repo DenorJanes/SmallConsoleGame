@@ -3,34 +3,31 @@
 #include "Playground.h"
 #include <cmath>
 
-bool MovementHandler::getKey(char key, DynamicGameObject& player)
+bool MovementHandler::getKey(DynamicGameObject& obj, char key)
 {
 	switch (key)
 	{
-	case 'w': execute(0, -1, player); break;
-	case 's': execute(0, 1, player); break;
-	case 'a': execute(-1, 0, player); break;
-	case 'd': execute(1, 0, player); break;
+	case 'w': obj.setDirectionX(0); obj.setDirectionY(-1); break;
+	case 's': obj.setDirectionX(0); obj.setDirectionY(1);  break;
+	case 'a': obj.setDirectionX(-1); obj.setDirectionY(0); break;
+	case 'd': obj.setDirectionX(1); obj.setDirectionY(0);  break;
 	default: return false;
 	}
 	
 	return true;
 }
 
-void MovementHandler::execute(int dirX, int dirY, DynamicGameObject& obj)
+void MovementHandler::execute(DynamicGameObject& obj, char key)
 {
-	if (abs(dirX) > 1) dirX /= abs(dirX);
-	if (abs(dirY) > 1) dirY /= abs(dirY);
+	// check for proper player input
+	getKey(obj, key);
 
 	// check if direction that ball can move ahead is set
-	if (!obj.CheckPathTo(_pg.getScene(), dirX, dirY))
-	{
-		while (!obj.CheckPathTo(
-			_pg.getScene(),
-			obj.getDirectionX(),
-			obj.getDirectionY()
-		));
-	}
+	while (!obj.CheckPathTo(
+		_pg.getScene(),
+		obj.getDirectionX(),
+		obj.getDirectionY()
+	));
 
 	obj.MoveInDirection();
 }

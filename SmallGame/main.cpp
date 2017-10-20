@@ -29,7 +29,7 @@ void main()
 		if (_kbhit())
 		{
 			char input = _getch();
-			move.getKey(input, player);
+			move.execute(player, input);
 		}
 
 		gm.updateLevel();
@@ -38,11 +38,7 @@ void main()
 		gm.victory_check();
 		gm.loss_check();
 
-		move.execute(
-			ball.getDirectionX(),
-			ball.getDirectionY(),
-			ball
-		);
+		move.execute(ball);
 
 		gm.updateLevel();
 	}

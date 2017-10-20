@@ -9,6 +9,9 @@ public:
 
 	int getDirectionX() const { return direction.x; }
 	int getDirectionY() const { return direction.y; }
+	
+	void setDirectionX(int dirX) { direction.x = (abs(dirX) > 1) ? dirX / abs(dirX) : dirX; }
+	void setDirectionY(int dirY) { direction.y = (abs(dirY) > 1) ? dirY / abs(dirY) : dirY; }
 
 	DynamicGameObject() { position.x = position.y = 0; }
 	virtual ~DynamicGameObject() = default;
