@@ -9,7 +9,7 @@ public:
 	Player();
 	~Player() = default;
 
-	bool CheckPathTo(const std::vector<std::string> scene, int x, int y) override;
+	bool CheckPathInDirection(const std::vector<std::string> scene) override;
 	void MoveInDirection() override;
 
 	int getLength() const { return length; }

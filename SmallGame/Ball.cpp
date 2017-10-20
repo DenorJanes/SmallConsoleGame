@@ -2,10 +2,17 @@
 #include "Wall.h"
 #include <list>
 
-bool Ball::CheckPathTo(const std::vector<std::string> scene, int x, int y)
+bool Ball::CheckPathInDirection(const std::vector<std::string> scene)
 {
-	int X = x + position.x;
-	int Y = y + position.y;
+	if (direction.y == 0 && 
+		direction.x == 0)
+		if (scene[position.y + 1][position.x] == ' ')
+		{
+			fall();
+		}
+
+	int X = direction.x + position.x;
+	int Y = direction.y + position.y;
 	
 	// for different direction after hitting the edge
 	bool decision = rand() % 2;
@@ -13,8 +20,8 @@ bool Ball::CheckPathTo(const std::vector<std::string> scene, int x, int y)
 	// we are in the corner
 	if (scene[Y][position.x] != ' ' && scene[position.y][X] != ' ') // we are in the corner
 		{
-			direction.x = -x;
-			direction.y = -y;
+			direction.x = -direction.x;
+			direction.y = -direction.y;
 			
 			if (_wall)
 			{
@@ -29,7 +36,7 @@ bool Ball::CheckPathTo(const std::vector<std::string> scene, int x, int y)
 	// we are facing top or bottom bounds
 	else if (scene[Y][position.x] != ' ') 
 	{ 
-		direction.y = -y;
+		direction.y = -direction.y;
 
 		if (_wall)
 		{
@@ -42,7 +49,7 @@ bool Ball::CheckPathTo(const std::vector<std::string> scene, int x, int y)
 	// we are facing left or right bounds																		  
 	else if (scene[position.y][X] != ' ') 
 	{ 
-		direction.x = -x; 
+		direction.x = -direction.x; 
 
 		if (_wall)
 		{
@@ -55,7 +62,7 @@ bool Ball::CheckPathTo(const std::vector<std::string> scene, int x, int y)
 	// we are facing the edge of the corner
 	else if (scene[Y][X] != ' ')
 	{
-		(decision) ? direction.x = -x : direction.y = -y;
+		(decision) ? direction.x = -direction.x : direction.y = -direction.y;
 
 		if (_wall)
 		{

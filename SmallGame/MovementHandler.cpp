@@ -23,11 +23,17 @@ void MovementHandler::execute(DynamicGameObject& obj, char key)
 	getKey(obj, key);
 
 	// check if direction that ball can move ahead is set
-	while (!obj.CheckPathTo(
-		_pg.getScene(),
-		obj.getDirectionX(),
-		obj.getDirectionY()
-	));
+	int getOut = 0;
+	while (!obj.CheckPathInDirection(_pg.getScene()))
+	{
+		// check if ball isn't locked by wall and player
+		if (++getOut > 4) 
+		{ 
+			obj.setDirectionX(0); 
+			obj.setDirectionY(0); 
+			break;
+		}
+	}
 
 	obj.MoveInDirection();
 }

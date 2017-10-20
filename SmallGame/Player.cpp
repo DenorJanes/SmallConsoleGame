@@ -8,34 +8,31 @@ Player::Player()
 	direction.y = 0;
 }
 
-bool Player::CheckPathTo(const std::vector<std::string> scene, int x, int y)
+bool Player::CheckPathInDirection(const std::vector<std::string> scene)
 {
-	int X = x + position.x;
-	int Y = y + position.y;
+	int X = direction.x + position.x;
+	int Y = direction.y + position.y;
 
 	// moving lefr or right
-	if (y == 0) 
+	if (direction.y == 0) 
 	{
 		if (scene[position.y][X] != ' ' && scene[position.y][X + length] != ' ')
 		{
-			x = 0;
+			direction.x = 0;
 		}
 	}
 	// moving up or down
-	else if (x == 0) 
+	else if (direction.x == 0) 
 	{
 		for (int iX = position.x; iX < position.x + length; ++iX)
 		{
 			if (scene[Y][iX] != ' ') 
 			{
-				y = 0;
+				direction.y = 0;
 				break;
 			}
 		}
 	}
-
-	direction.x = x;
-	direction.y = y;
 
 	return true;
 }
@@ -43,6 +40,8 @@ void Player::MoveInDirection()
 {
 	position.x += direction.x*2;
 	position.y += direction.y*1;
+
+	direction.x = direction.y = 0;
 }
 
 
